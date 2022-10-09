@@ -11,19 +11,19 @@ let timeout = null;
 //     }
 // }
 
-let list = [];
+let menu = [];
 
 searchInput.addEventListener("keyup", (e) => {
     if(timeout != null) clearTimeout(timeout);
     timeout = setTimeout(() => {
         const value = e.target.value;
-        console.log(list)
-        list.forEach((list) => {
-            const isVisible = list.name.includes(value);
-            list.element.classList.toggle("hide", !isVisible);
+        console.log(menu)
+        menu.forEach((list) => {
+            const isVisible = menu.name.includes(value);
+            menu.element.classList.toggle("hide", !isVisible);
         });
 
-        //console.log(user);
+        console.log(menu);
     }, 500);
 })
 
@@ -33,7 +33,7 @@ fetch("https://stream-restaurant-menu-svc.herokuapp.com/item")
     data.forEach(user => {
         const list = `<li>${user.name}</li>`;
 
-        document.querySelector('ul').insertAdjacentHTML('beforeend', list);
+        document.querySelector('.menulist').insertAdjacentHTML('beforeend', list);
     })
     })
   .catch(error => console.log(error));
